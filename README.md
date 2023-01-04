@@ -29,3 +29,11 @@ def index():
 ```
 
 Can view routes from a shell with `app.url_map`
+
+### Request Obj
+
+https://learning.oreilly.com/library/view/flask-web-development/9781491991725/ch02.html#ch02_request_object
+
+### Response Obj
+
+https://learning.oreilly.com/library/view/flask-web-development/9781491991725/ch02.html#ch02_response_object

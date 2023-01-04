@@ -1,10 +1,12 @@
-from flask import Flask, request
+from flask import Flask, request, make_response
 app = Flask(__name__)
 
 @app.route('/')
 def index():
   user_agent = request.headers.get('User-Agent')
-  return '<h1>Hello World! You are viewing this on {}</h1>'.format(user_agent)
+  response = make_response('<h1>I got a cookie</h1>'.format(user_agent))
+  response.set_cookie('answer', '42')
+  return response
 
 @app.route('/users/<name>')
 def user(name):
