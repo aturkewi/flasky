@@ -1,5 +1,8 @@
-from flask import Flask, request, make_response
+from flask import Flask, request, make_response, render_template
+from flask_bootstrap import Bootstrap
+
 app = Flask(__name__)
+bootstrap = Bootstrap(app)
 
 @app.route('/')
 def index():
@@ -10,7 +13,7 @@ def index():
 
 @app.route('/users/<name>')
 def user(name):
-  return '<h1>Hello, {}!!!</h1>'.format(name)
+  return render_template('user.html', name=name)
 
 # This was needed before the `flask` command could be used to run the app
 # if __name__ == '__main__':

@@ -37,3 +37,29 @@ https://learning.oreilly.com/library/view/flask-web-development/9781491991725/ch
 ### Response Obj
 
 https://learning.oreilly.com/library/view/flask-web-development/9781491991725/ch02.html#ch02_response_object
+
+### Jinja templates
+
+Uses filters instead of python: `{{name | capitalize}}`
+**Question: Why a special filter here? Why not use `.capitalize()`?**
+
+If/else in Jinja:
+```
+{% if user %}
+    Hello, {{ user }}!
+{% else %}
+    Hello, Stranger!
+{% endif %}
+```
+
+For in jinja:
+```
+{% for comment in comments %}
+    <li>{{ comment }}</li>
+{% endfor %}
+```
+
+>Note the need for explicit `end`s in Jinja!
+
+Ability to extend other templates (e.g. like a base template): `{% extends "bootstrap/base.html" %}`
+
