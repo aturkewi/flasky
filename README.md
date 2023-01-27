@@ -6,8 +6,17 @@ Following along with [O'Reilly Flask book](https://learning.oreilly.com/library/
 
 - Activate venv: `source venv/bin/activate`
   - To stop using venv, use `deactivate`
-- `pip install flask` (This will need to be moved to a requirements eventually?)
+- `pip install -r requirements.txt`
+- Open a DB editor and manually create `flasky` DB.
+- `bin/shell` to get an active shell. From the shell, run:
+    - `from hello import db`
+    - `db.create_all()`
+    - These commands will create the DB
 - `bin/run` to start the app on localhost:5000
+
+### Debugging
+
+`bin/shell` to get an active shell.
 
 ## Flask Notes
 
