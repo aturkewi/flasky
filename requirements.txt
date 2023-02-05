@@ -1,5 +1,7 @@
 flask
 flask_bootstrap
+flask-migrate
 flask_moment
 flask_sqlalchemy
+flask_wtf
 psycopg2
