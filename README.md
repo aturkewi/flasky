@@ -4,8 +4,7 @@ Following along with [O'Reilly Flask book](https://learning.oreilly.com/library/
 
 ## Getting started
 
-- Activate venv: `source venv/bin/activate`
-  - To stop using venv, use `deactivate`
+- Ensure dotenv is installed
 - `pip install -r requirements.txt`
 - Open a DB editor and manually create `flasky` DB.
 - `bin/shell` to get an active shell. From the shell, run:
@@ -71,4 +70,60 @@ For in jinja:
 >Note the need for explicit `end`s in Jinja!
 
 Ability to extend other templates (e.g. like a base template): `{% extends "bootstrap/base.html" %}`
+
+## Database
+
+- `flask db migrate` to create migration
+- `flask db upgrade` to run migration
+- `flask db downgrade` to rollback
+
+### Modify
+
+```python
+from hello import Role, User
+# Create obj in memory
+admin_role = Role(name='Admin')
+mod_role = Role(name='Moderator')
+user_role = Role(name='User')
+user_john = User(username='john', role=admin_role)
+user_susan = User(username='susan', role=user_role)
+user_david = User(username='david', role=user_role)
+
+# Stage for commit
+# Can be added individually with `.add()` instead of `.add_all()`
+# Add and add_all also perform update actions.
+db.session.add_all([admin_role, mod_role, user_role, user_john, user_susan, user_david])
+
+# Write to DB
+db.session.commit()
+```
+
+`db.session.delete(mod_role))` to delete from the DB.
+
+### Query
+
+`Role.query.all()`
+`User.query.filter_by(role=user_role).all()`
+
+Inspecting the query `str(User.query.filter_by(role=user_role))`
+
+Query methods:
+- `.all()`
+- `.first()`
+- `.get()`
+- `.count()`
+- `.paginate()`
+
+Filtering:
+- `.filter()`
+- `.filter_by()`
+- `.limit()`
+- `.offset()`
+- `.order_by()`
+- `.group_by()`
+
+[Querying guide](https://docs.sqlalchemy.org/en/20/orm/queryguide/index.html)
+
+
+
 
